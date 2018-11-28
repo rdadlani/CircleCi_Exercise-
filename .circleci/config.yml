@@ -1,0 +1,10 @@
+version: 2.0
+jobs:
+    build:
+        working_directory: ~/circleci_temp/react-redux-starter-kit
+        docker:
+            - image: circleci/node:7
+        steps:
+            - checkout
+            - run: npm install
+            - run: npm test
