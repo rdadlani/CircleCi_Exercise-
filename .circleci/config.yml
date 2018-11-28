@@ -6,5 +6,11 @@ jobs:
             - image: circleci/node:7
         steps:
             - checkout
+            - restore_cache:
+                key: -v.x-{{ checksum "requirements/dev.txt" }}
             - run: npm install
             - run: npm test
+            - save_cache:
+                key: -v.x-{{ checksum "requirements/dev.txt" }}
+                paths:
+                    - "."
